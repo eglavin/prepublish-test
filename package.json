@@ -5,6 +5,10 @@
   "description": "",
   "license": "ISC",
   "author": "Eanna Glavin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eglavin/prepublish-test.git"
+  },
   "type": "module",
   "main": "index.js",
   "module":  "index.js",
