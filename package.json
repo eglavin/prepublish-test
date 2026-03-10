@@ -1,0 +1,22 @@
+{
+  "name": "@eglavin/prepublish-test",
+  "version": "0.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Eanna Glavin",
+  "type": "module",
+  "main": "index.js",
+  "module":  "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ]
+}
