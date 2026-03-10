@@ -1,6 +1,7 @@
 {
   "name": "@eglavin/prepublish-test",
   "version": "0.0.0",
+  "private": false,
   "description": "",
   "license": "ISC",
   "author": "Eanna Glavin",
