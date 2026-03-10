@@ -2,7 +2,7 @@ name: Publish Package
 
 on:
   push:
-    branches: [main]
+    branches: [main, prerelease/*]
   workflow_dispatch: {}
 
 permissions:
@@ -37,12 +37,24 @@ jobs:
 
       - name: Run fork-version
         run: |
-          npx fork-version
+          if [ -n "${GITHUB_REF}" ] && [[ "${GITHUB_REF}" == refs/heads/prerelease/* ]]; then
+            npx fork-version --pre-release
+          else
+            npx fork-version
+          fi
 
       - name: Push changes
         run: |
-          git push --follow-tags origin main
+          if [ -n "${GITHUB_REF}" ] && [[ "${GITHUB_REF}" == refs/heads/prerelease/* ]]; then
+            git push --follow-tags origin "${GITHUB_REF#refs/heads/}"
+          else
+            git push --follow-tags origin main
+          fi
 
       - name: Publish to npm
         run: |
-          npm publish
+          if [ -n "${GITHUB_REF}" ] && [[ "${GITHUB_REF}" == refs/heads/prerelease/* ]]; then
+            npm publish --tag prerelease
+          else
+            npm publish
+          fi
